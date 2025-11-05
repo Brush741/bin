@@ -1,6 +1,6 @@
 # bin
 
-### 1. WAP for preprocessing of a text document such as stop word removal, stemming. ---------------------------
+### 1. WAP for preprocessing of a text document such as stop word removal, stemming. --------------------------
 
 import re
 try:
