@@ -31,7 +31,7 @@ def preprocess(text,remove_stopwords=True,do_stem=True):
             tokens=[SimpleStem(t) for t in tokens]
     return tokens
 
-if _name_ =="_main_":
+if __name__ =="__main__":
     s="This is the simple example: The cats were running quickly"
     print("orignal:",s)
     print("tokens:",preprocess(s))
@@ -99,7 +99,7 @@ def train_and_eval(path=r"C:\Users\aryan\Downloads\archive (6)\heart.csv"):
     print("Classification report:\n", classification_report(y_test, preds))
     return model
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     # Run with your CSV file in same folder named heart.csv
     model = train_and_eval(r"C:\Users\aryan\Downloads\archive (6)\heart.csv")
     # Example predict (replace values with real feature-vector)
@@ -136,7 +136,7 @@ def plot_dendrogram(Xs):
     plt.tight_layout()
     plt.show()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     Xs, labels = cluster_iris(3)
     print("Cluster labels (first 20):", labels[:20])
     plot_dendrogram(Xs)
@@ -170,7 +170,7 @@ def pagerank(graph, alpha=0.85, max_iter=100, tol=1e-6):
     return pr
 
 # Example usage
-if _name_ == "_main_":
+if __name__ == "__main__":
     g = {
         'A': ['B','C'],
         'B': ['C'],
