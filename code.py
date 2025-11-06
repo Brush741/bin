@@ -143,41 +143,35 @@ if __name__ == "__main__":
 
 ### 5. Implement Page rank Algorithm.-------------------------------------
 
-def pagerank(graph, alpha=0.85, max_iter=100, tol=1e-6):
-    nodes = sorted(graph.keys())
-    N = len(nodes)
-    idx = {n:i for i,n in enumerate(nodes)}
-    # build outlinks and handle dangling nodes
-    outlinks = {n: len(graph[n]) for n in nodes}
-    pr = {n: 1.0 / N for n in nodes}
-    for it in range(max_iter):
-        new_pr = {n: (1 - alpha) / N for n in nodes}
-        # distribute PageRank
-        for n in nodes:
-            if outlinks[n] == 0:
-                # dangling node: distribute evenly
-                for m in nodes:
-                    new_pr[m] += alpha * pr[n] / N
-            else:
-                share = alpha * pr[n] / outlinks[n]
-                for dest in graph[n]:
-                    new_pr[dest] += share
-        # check convergence
-        err = sum(abs(new_pr[n] - pr[n]) for n in nodes)
-        pr = new_pr
-        if err < tol:
-            break
-    return pr
+# pip install beautifulsoup4
+from bs4 import BeautifulSoup
 
-# Example usage
-if __name__ == "__main__":
-    g = {
-        'A': ['B','C'],
-        'B': ['C'],
-        'C': ['A'],
-        'D': ['C']
-    }
-    ranks = pagerank(g)
-    print("PageRank scores:")
-    for node, score in sorted(ranks.items(), key=lambda x:-x[1]):
-        print(f"{node}: {score:.4f}")
+# Sample HTML pages (offline)
+pages_html = {
+    'A': '<a href="B">B</a> <a href="C">C</a>',
+    'B': '<a href="C">C</a>',
+    'C': '<a href="A">A</a>',
+    'D': '<a href="C">C</a>'
+}
+
+# Extract links using BeautifulSoup
+pages = {}
+for name, html in pages_html.items():
+    soup = BeautifulSoup(html, 'html.parser')
+    pages[name] = [a['href'] for a in soup.find_all('a')]
+
+# --- PageRank ---
+d = 0.85
+N = len(pages)
+ranks = {p: 1/N for p in pages}
+
+for _ in range(30):
+    new = {}
+    for p in pages:
+        incoming = [x for x, links in pages.items() if p in links]
+        new[p] = (1-d)/N + d * sum(ranks[i]/len(pages[i]) for i in incoming)
+    ranks = new
+
+print("PageRank Results:")
+for p, r in ranks.items():
+    print(p, ":", round(r, 4))
