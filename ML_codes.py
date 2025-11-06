@@ -51,6 +51,8 @@ plt.title("PCA on Wine Dataset")
 plt.show()
 ---------------------------------------------------x---------------------------------------------x--------------------------------------------------------x----------
 ML2  Uber price prediction (Linear, Ridge, Lasso Regression)
+
+
 # Import libraries
 import pandas as pd
 import numpy as np
@@ -174,6 +176,7 @@ print(pd.crosstab(labels, df["Species"]))
 
 ML5 → Random Forest (car dataset)
 
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
@@ -214,6 +217,8 @@ print("\nReport:\n", classification_report(y_te, pred))
 ---------------------------------------------x------------------------------------------------------x--------------------------------------------------------------
 
 ML6 → Tic-Tac-Toe with Reinforcement Learning
+
+
 
 import numpy as np
 import random
