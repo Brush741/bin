@@ -1,5 +1,7 @@
 ML1 LDA and PCA
-LDA:-
+
+
+
 # LDA on Iris dataset (short and simple)
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -25,7 +27,6 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 sample = [[5.1, 3.5, 1.4, 0.2]]  # sample input (sepal & petal sizes)
 print("Predicted species:", iris.target_names[lda.predict(sample)[0]])
 
-PCA:-
 # PCA on Wine Dataset - single cell version
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
@@ -49,8 +50,10 @@ plt.xlabel("Principal Component 1")
 plt.ylabel("Principal Component 2")
 plt.title("PCA on Wine Dataset")
 plt.show()
+
 ---------------------------------------------------x---------------------------------------------x--------------------------------------------------------x----------
 ML2  Uber price prediction (Linear, Ridge, Lasso Regression)
+
 
 
 # Import libraries
@@ -103,8 +106,10 @@ for name, model in models.items():
     print(f"\n{name} Regression:")
     print("R² Score:", r2_score(y_test, y_pred))
     print("RMSE:", np.sqrt(mean_squared_error(y_test, y_pred)))
+  
 ------------------------------------------x--------------------------------------------------x------------------------------------------------------------x---------
 ML3 → SVM on handwritten digits
+
 
 
 # Small & easy SVM on handwritten digits (0–9)
@@ -137,9 +142,11 @@ y_pred = clf.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification report:\n", classification_report(y_test, y_pred))
 print("\nConfusion matrix:\n", confusion_matrix(y_test, y_pred))
+
 ---------------------------------------x------------------------------------------------------------x----------------------------------------------------x-----------
 ML4 → K-Means 
 # K-Means on Iris.csv with elbow method
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -172,9 +179,11 @@ print("Cluster centers:\n", kmeans.cluster_centers_)
 # 4) (Optional) Compare clusters with true species
 print("\nCluster vs Species (rough match, order may differ):")
 print(pd.crosstab(labels, df["Species"]))
+
 -----------------------------------------------------x--------------------------------------------------------------x-----------------------------------------------
 
 ML5 → Random Forest (car dataset)
+
 
 
 import pandas as pd
@@ -214,6 +223,7 @@ pred = pipe.predict(X_te)
 
 print("Accuracy:", accuracy_score(y_te, pred))
 print("\nReport:\n", classification_report(y_te, pred))
+
 ---------------------------------------------x------------------------------------------------------x--------------------------------------------------------------
 
 ML6 → Tic-Tac-Toe with Reinforcement Learning
@@ -300,6 +310,7 @@ def play():
     print("Winner:", check_winner(board))
 
 play()
+
 -------------------------------------x-----------------------------------------------------x-----------------------------------------------x-----------------------
 
 ML7 : Analyzing Sales Data from Multiple File Formats
@@ -347,11 +358,11 @@ plt.show()
 
 -------------------------------------x-----------------------------------------------------x-----------------------------------------------x-----------------------
 
-
 ML8: Analyzing Weather Data from OpenWeatherMap API
 # Educational example: provide how to request the API and how to analyze results.
 # NOTE: This code will not perform a real API call unless you set API_KEY and have internet access.
 # Fallback: if 'weather_sample.json' exists, it will be used.
+
 
 import os, json
 import pandas as pd
@@ -487,6 +498,7 @@ display(df.head())
 # Aggregations
 print("\nAverage price per city:\n", df.groupby("city")["price"].mean())
 print("\nMedian price_per_sqft by bedrooms:\n", df.groupby("bedrooms")["price_per_sqft"].median())
+
 ----------------------------------------------------------x----------------------------------------------------------------------------x--------------------------------------------------------------x--------------------
 
 
@@ -527,6 +539,7 @@ ML12 → Sales performance by region
 # Assignment ML12: Sales Performance by Region
 # Educational notebook. Expects './sales_region.csv' with ['Region','Product','Month','Sales'] or will create a sample.
 
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -561,4 +574,3 @@ plt.show()
 
 # Top regions overall
 print("Total sales by region:\n", df.groupby("Region")["Sales"].sum().sort_values(ascending=False))
---------------------------------------------------------------x----------------------------------------------------------------x-----------------------------------------------------------x-----------------------------
